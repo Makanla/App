@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Resultados</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+
+<body>
+    <nav class="nav nav-pills nav-fill bg-dark">
+      <a class="nav-link"  href="{{ url_for('perfil') }}">Mi Perfil</a>
+      <a class="nav-link active" href="{{ url_for('aplicacion') }}">Aplicacion</a>
+    </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-header">Palabras Encontradas</h5>
+            <p class="card-title">
+            <ul class="list-group">
+              {% for palabra in palabras_encontradas %}
+              <li class="list-group-item"><span class="encontrada">{{ palabra }}</span></li>
+              {% endfor %}
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-header">Palabras No Encontradas</h5>
+            <p class="card-title">
+            <ul class="list-group">
+              {% for palabra in palabras_no_encontradas %}
+              <li class="list-group-item">{{ palabra }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  <div class="container">
+    <div class="card card-body position-relative ">
+      <h5 class="card-title">Matriz de la sopa de letras:</h5>
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        {% for fila in matriz %}
+        <tr>
+          {% for letra in fila %}
+          {% if letra in palabras_encontradas %}
+          <td class="text-success">{{ letra }}</td>
+          {% else %}
+          <td class="texttr">{{ letra }}</td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+
+  </div>
+
+
+</body>
+
+</html>

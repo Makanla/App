@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aplicación</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+  <nav class="nav nav-pills nav-fill bg-dark">
+    <a class="nav-link"  href="{{ url_for('perfil') }}">Mi Perfil</a>
+    <a class="nav-link active" href="{{ url_for('aplicacion') }}">Aplicacion</a>
+  </nav>
+
+  <div class="container pt-4">
+    
+    
+      <h1>Aplicación</h1>
+      <div class="card card-body position-relative">
+        <h2>Búsqueda de Palabras</h2><br>
+        <form class="form-floating" action="/buscar-palabras" method="POST">
+            
+            <div class="form-group" for="palabras">Ingrese la lista de palabras que quiere buscar:</div>
+            <textarea class="form-control" placeholder="Las palabras deben separse por una coma (,)" name="palabras" id="palabras" required></textarea><br><br>
+    
+            <label for="matriz">Ingrese la matriz de datos:</label><br>
+            <textarea class="form-control" placeholder="La matriz debe estar separada por coma (,) para cada columna; para las filas se debe separar con punto y coma (;)" name="matriz" id="matriz" required></textarea><br><br>
+            <input class="form-control" type="submit" value="Buscar">
+        </form>
+      </div>
+    
+  </div>
+</body>
+
+</html>
